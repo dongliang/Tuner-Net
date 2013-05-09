@@ -1,7 +1,7 @@
 Tuner-Net
 =========
 
-Data interception use ProtoBuf in Unity3d game Development. 
+NetWork Library,easy to use ProtoBuf in Unity3d game Development. 
 
 Features：
 
