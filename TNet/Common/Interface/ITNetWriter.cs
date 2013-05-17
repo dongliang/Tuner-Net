@@ -4,7 +4,7 @@
    project: https://github.com/dongliang/Tuner-Net
 */
 using System.IO;
-namespace TNet
+namespace TNet.Common
 {
     public interface ITNetWriter
     {

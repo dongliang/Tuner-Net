@@ -3,7 +3,8 @@
    e-mail : dongliang17@126.com
    project: https://github.com/dongliang/Tuner-Net
 */
-namespace TNet
+using TNet.Common;
+namespace TNet.Client
 {
     public class TNetMgr:Singleton<TNetMgr>
     {

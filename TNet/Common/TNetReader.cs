@@ -6,7 +6,7 @@
 using System;
 using System.IO;
 using System.Net;
-namespace TNet
+namespace TNet.Common
 {
 
     //Buffer
@@ -59,7 +59,7 @@ namespace TNet
                 msg.m_nMsgID = msg_id;
                 msg.m_DataMsg = msg_data_body;
 
-                adapter.SendMsg(msg);
+                adapter.HandleMsg(msg);
             }
             else
             {

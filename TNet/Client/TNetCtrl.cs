@@ -8,8 +8,8 @@ using System.Net.Sockets;
 using System.IO;
 using System.Collections.Generic;
 using System.Net;
-using UnityEngine;
-namespace TNet
+using TNet.Common;
+namespace TNet.Client
 {
     public interface INetMessageReader
     {
@@ -57,7 +57,8 @@ namespace TNet
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(e.Message);
+
+                    m_Adapter.Debug(e.Message);
                 }
 
                 IPAddress ip = IPAddress.Parse(a_strRomoteIP);
@@ -82,7 +83,7 @@ namespace TNet
             }
             catch (Exception e)
             {
-                Debug.Log(e.Message);
+                m_Adapter.Debug(e.Message);
             }
         }
 
@@ -111,7 +112,7 @@ namespace TNet
             }
             catch (Exception e)
             {
-                Debug.Log(e.Message);
+                m_Adapter.Debug(e.Message);
             }
         }
 
@@ -138,12 +139,12 @@ namespace TNet
                 }
                 else
                 {
-                    Debug.Log("Network Shutdown");
+                    m_Adapter.Debug("Network Shutdown");
                 }
             }
             catch (Exception e)
             {
-                Debug.Log(e.Message);
+                m_Adapter.Debug(e.Message);
             }
         }
 
@@ -182,7 +183,7 @@ namespace TNet
             }
             catch (Exception e)
             {
-                Debug.Log(e.Message);
+                m_Adapter.Debug(e.Message);
             }
             return false;
         }
@@ -205,7 +206,7 @@ namespace TNet
             }
             catch (Exception e)
             {
-                Debug.Log(e.Message);
+                m_Adapter.Debug(e.Message);
             }
         }
 
@@ -242,7 +243,7 @@ namespace TNet
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(e.Message);
+                    m_Adapter.Debug(e.Message);
                 }
                 finally
                 {

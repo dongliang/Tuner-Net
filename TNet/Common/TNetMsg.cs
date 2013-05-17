@@ -5,7 +5,7 @@
 */
 
 using System.IO;
-namespace TNet
+namespace TNet.Common
 {
     public class TNetMsg
     {

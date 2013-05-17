@@ -3,7 +3,7 @@
    e-mail : dongliang17@126.com
    project: https://github.com/dongliang/Tuner-Net
 */
-namespace TNet
+namespace TNet.Common
 {
     public class Singleton<T> where T : new()
     {

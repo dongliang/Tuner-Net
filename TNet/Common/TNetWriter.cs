@@ -6,7 +6,7 @@
 using System.IO;
 using System.Net;
 using System;
-namespace TNet
+namespace TNet.Common
 {
 
     public class TNetWriter : ITNetWriter

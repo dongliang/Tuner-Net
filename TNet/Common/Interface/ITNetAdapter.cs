@@ -3,10 +3,11 @@
    e-mail : dongliang17@126.com
    project: https://github.com/dongliang/Tuner-Net
 */
-namespace TNet
+namespace TNet.Common
 {
     public interface ITNetAdapter
     {
-        void SendMsg(TNetMsg msg);
+        void HandleMsg(TNetMsg msg);
+        void Debug(object message);
     }
 }
