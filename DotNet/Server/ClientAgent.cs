@@ -59,7 +59,7 @@ namespace TNet.Server
                 mIsRecving = true;
                 m_ar_Recv = mClientSocket.BeginReceive(m_RecBuffer, mRecvTail, m_RecBufferSize - mRecvTail, 0, new AsyncCallback(ReceiveCallback), 0);
 
-                mServer.m_Adapter.Debug("recving__" + mIsRecving.ToString());
+              //  mServer.m_Adapter.Debug("recving__" + mIsRecving.ToString());
             }
             catch (Exception e)
             {
@@ -79,12 +79,16 @@ namespace TNet.Server
                 {
                     mRecvTail += bytesRead;
                     mIsRecving = false;
-                    mServer.m_Adapter.Debug("recving__" + mIsRecving.ToString());
+                   // mServer.m_Adapter.Debug("recving__" + mIsRecving.ToString());
                 }
                 else
                 {
                     mServer.m_Adapter.Debug("Network Shutdown");
-                    Receive();
+
+                    lock (mServer.mClosedAgents)
+                    {
+                        mServer.mClosedAgents.Add(this);
+                    }
                 }
             }
             catch (Exception e)

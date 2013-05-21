@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace TNet.Server
 {
-   public class TServer
+    public class TServer
     {
         Socket mSocket;
         List<ClientAgent> mClientAgents = new List<ClientAgent>();
@@ -17,6 +17,7 @@ namespace TNet.Server
         public ITNetReader m_Reader = null;
         public ITNetWriter m_Writer = null;
         public ITNetAdapter m_Adapter = null;
+        public List<ClientAgent> mClosedAgents = new List<ClientAgent>();
         public void Start()
         {
             m_Reader = new TNetReader();
@@ -28,17 +29,21 @@ namespace TNet.Server
             mSocket.Listen(4);
             mSocket.BeginAccept(AcceptCallback, mSocket);
             Console.WriteLine("Tuner Server Start!");
-
             loop();
         }
 
-       public void loop()
+        public void loop()
         {
             while (true)
             {
                 Thread.Sleep(100);
                 Update();
-                
+                foreach (ClientAgent item in mClosedAgents)
+                {
+                    item.DisConnect();
+                    mClientAgents.Remove(item);
+                }
+                mClosedAgents.Clear();
             }
         }
 
@@ -52,7 +57,7 @@ namespace TNet.Server
 
         public void AcceptCallback(IAsyncResult ar)
         {
-            
+
             Socket client = ((Socket)ar.AsyncState).EndAccept(ar);
             ClientAgent agent = new ClientAgent(this, client);
             agent.Receive();
@@ -62,6 +67,7 @@ namespace TNet.Server
 
                 mClientAgents.Add(agent);
             }
+            mSocket.BeginAccept(AcceptCallback, mSocket);
         }
     }
 }
