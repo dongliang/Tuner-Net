@@ -11,12 +11,11 @@ namespace TNet.Client
         TNetCtrl m_Ctrl = null;
         public TNetMgr()
         {
-            m_Ctrl =  new TNetCtrl();
+           
         }
         public void Init(ITNetAdapter adapter)
-        {
-            m_Ctrl.m_Adapter = adapter;
-
+        {         
+            m_Ctrl = new TNetCtrl(adapter);  
         }
         public void Destroy()
         {
@@ -26,6 +25,11 @@ namespace TNet.Client
         public void Update()
         {
             m_Ctrl.Update();
+        }
+
+        public bool IsConnected()
+        {
+            return m_Ctrl.IsConnected();
         }
 
         public bool Connect(string a_strRomoteIP, ushort a_uPort)

@@ -34,6 +34,12 @@ namespace TNet.Client
         int mRecvTail = 0;//point to the last valid address 's next address.
         public ITNetAdapter m_Adapter = null;
 
+        public TNetCtrl(ITNetAdapter adapter)
+        {
+            m_Reader = adapter.GetMsgReader();
+            m_Writer = adapter.GetMsgWriter();
+        }
+
         public void Update()
         {
 

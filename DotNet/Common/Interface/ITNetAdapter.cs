@@ -9,5 +9,7 @@ namespace TNet.Common
     {
         void HandleMsg(TNetMsg msg);
         void Debug(object message);
+        ITNetWriter GetMsgWriter();
+        ITNetReader GetMsgReader();
     }
 }

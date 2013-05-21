@@ -1,0 +1,55 @@
+package TunerMessage;
+ 
+option optimize_for = SPEED;
+
+message PBString
+{
+   required string str_value = 1;
+}
+
+message PBBytes
+{
+   required bytes byte_value = 1;
+}
+
+message PBInt
+{  
+   required int32 int_value = 1;
+}
+
+message PBUInt
+{ 
+   required uint32 uint_value = 1;
+}
+
+message PBLong
+{
+   required int64 long_value = 1;
+}
+
+message PBULong
+{
+   required uint64 ulong_value = 1;
+}
+
+message PBFixed32
+{
+   required fixed32 int_value = 1; 
+}
+
+message PBFixed64
+{
+   required fixed64 long_value = 1;
+}
+
+message PBFloat
+{
+   required float float_value = 1;
+}
+
+message PBVector3
+{
+   required float x = 1;
+   required float y = 2;
+   required float z = 3;
+}
