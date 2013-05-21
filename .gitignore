@@ -12,3 +12,10 @@
 /Unity/Assembly-CSharp-Editor.csproj
 /Unity/Assembly-CSharp-Editor-vs.csproj
 /Unity/Assembly-CSharp-firstpass.csproj
+/DotNet/TNet.v11.suo
+/DotNet/Common/bin
+/DotNet/Common/obj
+/DotNet/Client/obj
+/DotNet/Client/bin
+obj
+bin

@@ -5,9 +5,10 @@ using TNet.Client;
 public class Test : MonoBehaviour {
 
 	// Use this for 
-
+    int id;
     void Awake()
     {
+        id = Random.Range(1, 10);
         TNetMgr.Instance.Init(new DP_TNet_Adapter());
         TNetMgr.Instance.Connect("127.0.0.1", 9298);
       
@@ -19,9 +20,9 @@ public class Test : MonoBehaviour {
 
     void testSend()
     {
-
+     
         TunerMessage.PBString temp = new TunerMessage.PBString();
-        temp.str_value = Time.time.ToString();
+        temp.str_value =id.ToString() + "___"+ Time.time.ToString();
         if (TNetMgr.Instance == null)
         {
             Debug.Log(222);
