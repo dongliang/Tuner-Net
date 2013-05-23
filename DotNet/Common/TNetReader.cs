@@ -20,7 +20,7 @@ namespace TNet.Common
         /// <param name="size">size</param>
         /// <param name="start">start</param>
         /// <returns>new start</returns>
-        public int DidReadData(byte[] data, int start, int tail, ITNetAdapter adapter)
+        public int DidReadData(byte[] data, int start, int tail, ITNetAdapter adapter,System.Object state)
         {
             int size = tail - start;
             int msg_id = 0;
@@ -59,7 +59,7 @@ namespace TNet.Common
                 msg.m_nMsgID = msg_id;
                 msg.m_DataMsg = msg_data_body;
 
-                adapter.HandleMsg(msg);
+                adapter.HandleMsg(state,msg);
             }
             else
             {
@@ -67,7 +67,7 @@ namespace TNet.Common
             }
 
             //recurrence passing the new start address.
-            return DidReadData(data, start + data_size + 8, tail,adapter);
+            return DidReadData(data, start + data_size + 8, tail, adapter, state);
         }
 
         public void Reset()

@@ -47,7 +47,7 @@ namespace TNet.Client
             {
                 if (m_Reader != null)
                 {
-                    mRecvHead = m_Reader.DidReadData(m_RecBuffer, mRecvHead, mRecvTail,m_Adapter);
+                    mRecvHead = m_Reader.DidReadData(m_RecBuffer, mRecvHead, mRecvTail,m_Adapter,null);
                 }
                 Receive();
             }

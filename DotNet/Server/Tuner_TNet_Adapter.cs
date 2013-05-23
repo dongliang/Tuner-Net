@@ -3,7 +3,7 @@ using TNet.Common;
 
 public class Tuner_TNet_Adapter : ITNetAdapter
 {
-    public void HandleMsg(TNetMsg msg)
+    public void HandleMsg(System.Object state, TNetMsg msg)
     {
       TunerMessage.PBString temp =  msg.DeSerializeProtocol<TunerMessage.PBString>();
         System.Console.WriteLine(msg.m_nMsgID.ToString() +"__"+ temp.str_value);

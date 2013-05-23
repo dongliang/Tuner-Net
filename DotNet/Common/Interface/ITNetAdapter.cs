@@ -7,7 +7,7 @@ namespace TNet.Common
 {
     public interface ITNetAdapter
     {
-        void HandleMsg(TNetMsg msg);
+        void HandleMsg(System.Object state,TNetMsg msg);
         void Debug(object message);
         ITNetWriter GetMsgWriter();
         ITNetReader GetMsgReader();

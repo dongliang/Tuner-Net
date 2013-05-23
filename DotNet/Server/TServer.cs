@@ -12,12 +12,13 @@ namespace TNet.Server
     public class TServer
     {
         Socket mSocket;
-        List<ClientAgent> mClientAgents = new List<ClientAgent>();
+        Dictionary<int,ClientAgent> mClientAgents = new Dictionary<int,ClientAgent>();
 
         public ITNetReader m_Reader = null;
         public ITNetWriter m_Writer = null;
         public ITNetAdapter m_Adapter = null;
-        public List<ClientAgent> mClosedAgents = new List<ClientAgent>();
+        public int mSessionNumber = 0;
+        public List<int> mClosedAgents = new List<int>();
         public void Start()
         {
             m_Reader = new TNetReader();
@@ -32,15 +33,20 @@ namespace TNet.Server
             loop();
         }
 
+        int generateSessionID()
+        {
+            return ++mSessionNumber;
+        }
+
         public void loop()
         {
             while (true)
             {
                 Thread.Sleep(100);
                 Update();
-                foreach (ClientAgent item in mClosedAgents)
+                foreach (int item in mClosedAgents)
                 {
-                    item.DisConnect();
+                    mClientAgents[item].DisConnect();
                     mClientAgents.Remove(item);
                 }
                 mClosedAgents.Clear();
@@ -49,23 +55,22 @@ namespace TNet.Server
 
         public void Update()
         {
-            foreach (ClientAgent item in mClientAgents)
+            foreach (KeyValuePair<int, ClientAgent> item in mClientAgents)
             {
-                item.Update();
+                item.Value.Update();
             }
         }
 
         public void AcceptCallback(IAsyncResult ar)
         {
-
+            int sessionId = generateSessionID();
             Socket client = ((Socket)ar.AsyncState).EndAccept(ar);
-            ClientAgent agent = new ClientAgent(this, client);
+            ClientAgent agent = new ClientAgent(this, client, sessionId);
             agent.Receive();
             Console.WriteLine("client connect!");
             lock (mClientAgents)
             {
-
-                mClientAgents.Add(agent);
+                mClientAgents.Add(sessionId,agent);
             }
             mSocket.BeginAccept(AcceptCallback, mSocket);
         }

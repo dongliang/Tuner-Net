@@ -14,7 +14,7 @@ namespace TNet.Common
         /// <param name="size">size</param>
         /// <param name="start">start</param>
         /// <returns>new start</returns>
-        int DidReadData(byte[] data, int start, int tail, ITNetAdapter adapter);
+        int DidReadData(byte[] data, int start, int tail, ITNetAdapter adapter, System.Object state);
         void Reset();
         
     }

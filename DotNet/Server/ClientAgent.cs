@@ -11,6 +11,7 @@ namespace TNet.Server
     {
         Socket mClientSocket;
         TServer mServer;
+        int mSessionId;
         private IAsyncResult m_ar_Recv = null;
         private IAsyncResult m_ar_Send = null;
         public const int m_RecBufferSize = 65536;
@@ -21,9 +22,10 @@ namespace TNet.Server
         int mRecvTail = 0;//point to the last valid address 's next address.
 
 
-        public ClientAgent(TServer server, Socket clientSocket)
+        public ClientAgent(TServer server, Socket clientSocket,int sessionId)
         {
             mServer = server;
+            mSessionId = sessionId;
             mClientSocket = clientSocket;
         }
 
@@ -34,7 +36,7 @@ namespace TNet.Server
             {
                 if (mServer.m_Reader != null)
                 {
-                    mRecvHead = mServer.m_Reader.DidReadData(m_RecBuffer, mRecvHead, mRecvTail, mServer.m_Adapter);
+                    mRecvHead = mServer.m_Reader.DidReadData(m_RecBuffer, mRecvHead, mRecvTail, mServer.m_Adapter,mSessionId);
                 }
                 Receive();
             }
@@ -87,7 +89,7 @@ namespace TNet.Server
 
                     lock (mServer.mClosedAgents)
                     {
-                        mServer.mClosedAgents.Add(this);
+                        mServer.mClosedAgents.Add(this.mSessionId);
                     }
                 }
             }

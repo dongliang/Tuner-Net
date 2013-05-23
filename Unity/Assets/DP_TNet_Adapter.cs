@@ -2,7 +2,7 @@
 using UnityEngine;
 public class DP_TNet_Adapter : ITNetAdapter
 {
-    public void HandleMsg(TNetMsg msg)
+    public void HandleMsg(System.Object state, TNetMsg msg)
     {
         //send the message to the particular message system.
     }
