@@ -38,6 +38,7 @@ namespace TNet.Client
         {
             m_Reader = adapter.GetMsgReader();
             m_Writer = adapter.GetMsgWriter();
+            m_Adapter = adapter;
         }
 
         public void Update()
