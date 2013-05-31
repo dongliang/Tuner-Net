@@ -53,3 +53,15 @@ message PBVector3
    required float y = 2;
    required float z = 3;
 }
+
+message TMLogin
+{
+	required string username = 1;
+	required string password = 2;
+}
+
+message TMLoginOut
+{
+	required bool result = 1;
+	optional string nickname = 2;
+}
