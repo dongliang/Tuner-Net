@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace TNet.Server
 {
-    public class TServer
+    public class TServer:Singleton<TServer>
     {
         Socket mSocket;
         Dictionary<int,ClientAgent> mClientAgents = new Dictionary<int,ClientAgent>();
@@ -24,7 +24,6 @@ namespace TNet.Server
             m_Reader = new TNetReader();
             m_Writer = new TNetWriter();
             m_Adapter = new Tuner_TNet_Adapter();
-
             mSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             mSocket.Bind(new IPEndPoint(IPAddress.Any, 9298));
             mSocket.Listen(4);
@@ -32,6 +31,15 @@ namespace TNet.Server
             Console.WriteLine("Tuner Server Start!");
             loop();
         }
+
+        public ClientAgent getClient(int sessionId)
+        {
+            ClientAgent temp;
+            mClientAgents.TryGetValue(sessionId, out temp);
+            return temp;
+        }
+
+
 
         int generateSessionID()
         {

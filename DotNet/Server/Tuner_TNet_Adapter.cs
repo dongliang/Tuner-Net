@@ -1,13 +1,23 @@
 ﻿using TNet;
 using TNet.Common;
+using TNet.Server;
 
 public class Tuner_TNet_Adapter : ITNetAdapter
 {
     public void HandleMsg(System.Object state, TNetMsg msg)
     {
-      TunerMessage.PBString temp =  msg.DeSerializeProtocol<TunerMessage.PBString>();
-        System.Console.WriteLine(msg.m_nMsgID.ToString() +"__"+ temp.str_value);
+        TunerMessage.TMLogin temp = msg.DeSerializeProtocol<TunerMessage.TMLogin>();
+        System.Console.WriteLine(msg.m_nMsgID.ToString() +"__"+ temp.username + "____" + temp.password);
         //send the message to the particular message system.
+
+        //test send
+//         ClientAgent tempClient = TServer.Instance.getClient((int)state);
+//          TunerMessage.PBString tempMsg = new TunerMessage.PBString();
+//         tempMsg.str_value ="中文";
+// 
+//         tempClient.SendNetMessage<TunerMessage.PBString>(7,tempMsg);
+        
+
     }
     public void Debug(object message)
     {

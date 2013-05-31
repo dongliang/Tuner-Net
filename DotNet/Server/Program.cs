@@ -7,7 +7,7 @@ using TNet.Server;
     {
         static void Main(string[] args)
         {
-            TServer server = new TServer();
+            TServer server =TServer.Instance;
             server.Start();
             Console.Read();
         }
