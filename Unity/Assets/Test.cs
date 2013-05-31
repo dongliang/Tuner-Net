@@ -14,30 +14,26 @@ public class Test : MonoBehaviour {
       
 
     }
-	void Start () {   
-      
+	void Start () {
+        if (TNetMgr.Instance.IsConnected())
+        {
+            testSend();
+        }
 	}
 
     void testSend()
     {
-     
-        TunerMessage.PBString temp = new TunerMessage.PBString();
-        temp.str_value =id.ToString() + "___"+ Time.time.ToString();
-        if (TNetMgr.Instance == null)
-        {
-            Debug.Log(222);
-        }
-        TNetMgr.Instance.SendNetMessage<TunerMessage.PBString>(6,temp);
-        Debug.Log(temp.str_value);
+
+        TunerMessage.TMLogin temp = new TunerMessage.TMLogin();
+        temp.username = "cotngf";
+        temp.password = "dlkeyf";
+        TNetMgr.Instance.SendNetMessage<TunerMessage.TMLogin>(1, temp);
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-      if (TNetMgr.Instance.IsConnected())
-      {
-          testSend();
-      }
-      // 
-	
+        TNetMgr.Instance.Update();
+      //
 	}
 }
