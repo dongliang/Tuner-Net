@@ -155,12 +155,9 @@ namespace TNet.Client
             }
         }
 
-        public bool SendNetMessage<T>(int msgID, T data)
-        {
-            return _SendMessage(msgID, m_Writer.Serialize<T>(data));
-        }
 
-        public bool _SendMessage(int msgID, MemoryStream data)
+
+        public bool SendMessage(int msgID, MemoryStream data)
         {
             if (m_Writer != null)
             {

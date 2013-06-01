@@ -11,11 +11,11 @@ public class Tuner_TNet_Adapter : ITNetAdapter
         //send the message to the particular message system.
 
         //test send
-//         ClientAgent tempClient = TServer.Instance.getClient((int)state);
-//          TunerMessage.PBString tempMsg = new TunerMessage.PBString();
-//         tempMsg.str_value ="中文";
-// 
-//         tempClient.SendNetMessage<TunerMessage.PBString>(7,tempMsg);
+        ClientAgent tempClient = TServer.Instance.getClient((int)state);
+        TunerMessage.TMLoginOut tempMsg = new TunerMessage.TMLoginOut();
+        tempMsg.nickname = "33";
+
+        tempClient.SendNetMessage<TunerMessage.TMLoginOut>(7,tempMsg);
         
 
     }

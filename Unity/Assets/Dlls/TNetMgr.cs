@@ -4,6 +4,7 @@
    project: https://github.com/dongliang/Tuner-Net
 */
 using TNet.Common;
+using System.IO;
 namespace TNet.Client
 {
     public class TNetMgr:Singleton<TNetMgr>
@@ -11,7 +12,7 @@ namespace TNet.Client
         TNetCtrl m_Ctrl = null;
         public TNetMgr()
         {
-           
+          
         }
         public void Init(ITNetAdapter adapter)
         {         
@@ -51,9 +52,9 @@ namespace TNet.Client
             return m_Ctrl.DisConnect();
         }
 
-        public bool SendNetMessage<T>(int msgID, T data)
+        public bool SendNetMessage(int msgID, MemoryStream data)
         {
-           return m_Ctrl.SendNetMessage<T>(msgID, data);
+           return m_Ctrl.SendMessage(msgID, data);
         }
 
         public void Close()

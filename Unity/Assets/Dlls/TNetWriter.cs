@@ -47,8 +47,8 @@ namespace TNet.Common
         public MemoryStream Serialize<T>(T instance)
         {
             m_streamBuff.SetLength(0);
-            TunerSerializer temp = new TunerSerializer();
-            temp.Serialize(m_streamBuff, instance); 
+         //   TunerSerializer temp = new TunerSerializer();
+        //   temp.Serialize(m_streamBuff, instance); 
             return m_streamBuff;
         }
     }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TNet.Client;
+using System.IO;
 
 public class Test : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class Test : MonoBehaviour {
         TNetMgr.Instance.Init(new DP_TNet_Adapter());
         TNetMgr.Instance.Connect("127.0.0.1", 9298);
       
-
+        
     }
 	void Start () {
         if (TNetMgr.Instance.IsConnected())
@@ -23,12 +24,24 @@ public class Test : MonoBehaviour {
 
     void testSend()
     {
+// 
+//  TunerMessage.TMLogin temp = new TunerMessage.TMLogin();
+//  temp.username = "cotngf";
+//   temp.password = "dlkeyf";
+//    TNetMgr.Instance.SendNetMessage<TunerMessage.TMLogin>(1, temp);
 
         TunerMessage.TMLogin temp = new TunerMessage.TMLogin();
-        temp.username = "cotngf";
-        temp.password = "dlkeyf";
-        TNetMgr.Instance.SendNetMessage<TunerMessage.TMLogin>(1, temp);
+        temp.Username = "cotngf1";
+        temp.Password = "dlkeyf1";
+        MemoryStream tempStream = new MemoryStream();
+        TunerMessage.TMLogin.Serialize(tempStream, temp);
+        Debug.Log(tempStream.Length);
+       TunerMessage.TMLogin temp2 =     TunerMessage.TMLogin.Deserialize(tempStream);
+       Debug.Log(temp2.Password);
+
+        TNetMgr.Instance.SendNetMessage(1, tempStream);
         
+       // TunerMessage.TMLogin.Serialize()
     }
 	
 	// Update is called once per frame
