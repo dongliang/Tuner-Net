@@ -11,7 +11,7 @@ public class Test : MonoBehaviour {
     {
         id = Random.Range(1, 10);
         TNetMgr.Instance.Init(new DP_TNet_Adapter());
-        TNetMgr.Instance.Connect("127.0.0.1", 9298);
+        TNetMgr.Instance.Connect("192.168.123.1", 9298);
       
         
     }
