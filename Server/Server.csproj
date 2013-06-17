@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3369363C-86FB-4BF0-A0CD-4EDDE7B78CF0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Server</RootNamespace>
+    <AssemblyName>Server</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\Interface\ITNetAdapter.cs">
+      <Link>Common\ITNetAdapter.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\Interface\ITNetReader.cs">
+      <Link>Common\ITNetReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\Interface\ITNetWriter.cs">
+      <Link>Common\ITNetWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\Singleton.cs">
+      <Link>Common\Singleton.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\TNetMsg.cs">
+      <Link>Common\TNetMsg.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\TNetReader.cs">
+      <Link>Common\TNetReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\TNetWriter.cs">
+      <Link>Common\TNetWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\Proto\ProtocolParser.cs">
+      <Link>Proto\ProtocolParser.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\Proto\TunerMsg.cs">
+      <Link>Proto\TunerMsg.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\Proto\TunerMsg.Serializer.cs">
+      <Link>Proto\TunerMsg.Serializer.cs</Link>
+    </Compile>
+    <Compile Include="ClientAgent.cs" />
+    <Compile Include="TServer.cs" />
+    <Compile Include="Tuner_TNet_Adapter.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Proto\" />
+  </ItemGroup>
+</Project>
