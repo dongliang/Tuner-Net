@@ -55,7 +55,7 @@ namespace TNet.Common
                 MemoryStream msg_data_body = new MemoryStream();
                 msg_data_body.SetLength(0);
                 msg_data_body.Write(data, start + 8, data_size);
-
+				msg_data_body.Position = 0;
                 msg.m_nMsgID = msg_id;
                 msg.m_DataMsg = msg_data_body;
 

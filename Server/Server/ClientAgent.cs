@@ -99,9 +99,9 @@ namespace TNet.Server
             }
         }
 
-        public bool SendNetMessage<T>(int msgID, T data)
+		public bool SendNetMessage(int msgID,  MemoryStream data)
         {
-            return _SendMessage(msgID, mServer.m_Writer.Serialize<T>(data));
+			return _SendMessage(msgID,data);
         }
 
         public bool _SendMessage(int msgID, MemoryStream data)

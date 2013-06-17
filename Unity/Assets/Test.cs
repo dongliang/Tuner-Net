@@ -11,7 +11,7 @@ public class Test : MonoBehaviour {
     {
         id = Random.Range(1, 10);
         TNetMgr.Instance.Init(new DP_TNet_Adapter());
-        TNetMgr.Instance.Connect("192.168.123.1", 9298);
+		TNetMgr.Instance.Connect("192.168.1.138", 9298);
       
         
     }
@@ -33,11 +33,11 @@ public class Test : MonoBehaviour {
         TunerMessage.TMLogin temp = new TunerMessage.TMLogin();
         temp.Username = "cotngf1";
         temp.Password = "dlkeyf1";
+
         MemoryStream tempStream = new MemoryStream();
         TunerMessage.TMLogin.Serialize(tempStream, temp);
-        Debug.Log(tempStream.Length);
-       TunerMessage.TMLogin temp2 =     TunerMessage.TMLogin.Deserialize(tempStream);
-       Debug.Log(temp2.Password);
+
+
 
         TNetMgr.Instance.SendNetMessage(1, tempStream);
         

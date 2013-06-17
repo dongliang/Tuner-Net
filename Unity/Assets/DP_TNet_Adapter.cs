@@ -11,8 +11,8 @@ public class DP_TNet_Adapter : ITNetAdapter
 //         str = temp.Deserialize(msg.m_DataMsg, null, typeof(TunerMessage.PBString)) as TunerMessage.PBString;
         
       //  UnityEngine.Debug.Log(msg.m_nMsgID.ToString() +str.str_value);
-        UnityEngine.Debug.Log(msg.m_DataMsg.Length);
-        UnityEngine.Debug.Log(msg.m_DataMsg.Position = 0);
+
+
 
        TunerMessage.TMLoginOut temp =  TunerMessage.TMLoginOut.Deserialize(msg.m_DataMsg);
 
