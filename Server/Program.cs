@@ -1,14 +1,14 @@
 using System;
-using TNet.Server;
-namespace Server
+using Tuner.Net;
+
+class MainClass
 {
-	class MainClass
+	public static void Main (string[] args)
 	{
-		public static void Main (string[] args)
-		{
-			TServer server =TServer.Instance;
-			server.Start();
-			Console.Read();
-		}
+		ITNetAdapter adapter = new Tuner_TNet_Adapter ();
+		Server server = Server.Instance;
+		server.Init(adapter);
+		server.Start ();
+		Console.Read ();
 	}
 }

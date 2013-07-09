@@ -1,4 +1,4 @@
-﻿using TNet.Common;
+using Tuner.Net;
 
 public class DP_TNet_Adapter : ITNetAdapter
 {
@@ -17,7 +17,6 @@ public class DP_TNet_Adapter : ITNetAdapter
        TunerMessage.TMLoginOut temp =  TunerMessage.TMLoginOut.Deserialize(msg.m_DataMsg);
 
        UnityEngine.Debug.Log(temp.Nickname); 
-       
         
     }
     public void Debug(object message)
@@ -25,16 +24,26 @@ public class DP_TNet_Adapter : ITNetAdapter
         UnityEngine.Debug.Log(message);
     }
 
-    public ITNetWriter GetMsgWriter()
+    public ITNetWriter createMsgWriter()
     {
 
-        return new TNet.Common.TNetWriter();
+        return new TNetWriter();
         //   return new Common.
 
     }
-    public ITNetReader GetMsgReader()
+    public ITNetReader createMsgReader()
     {
-        return new TNet.Common.TNetReader();
+        return new TNetReader();
         //return new Tnet();
     }
+
+	public void onConnected (){}
+	
+	public void onAccepted (){}
+	
+	public void onReConnected (){}
+	
+	public void onNetWorkFailed (){}
+	
+	public void onReConnectBegin (){}
 }

@@ -1,6 +1,6 @@
-﻿using TNet;
-using TNet.Common;
-using TNet.Server;
+﻿
+using Tuner.Net;
+using Tuner;
 using System.IO;
 
 public class Tuner_TNet_Adapter : ITNetAdapter
@@ -12,14 +12,15 @@ public class Tuner_TNet_Adapter : ITNetAdapter
         System.Console.WriteLine(msg.m_nMsgID.ToString() +"__"+ temp.Username + "____" + temp.Password);
         //send the message to the particular message system.
 
+
         //test send
-        ClientAgent tempClient = TServer.Instance.getClient((int)state);
+        Agent tempClient = Server.Instance.getClient((int)state);
         TunerMessage.TMLoginOut tempMsg = new TunerMessage.TMLoginOut();
         tempMsg.Nickname = "yyss";
 		MemoryStream mem = new MemoryStream ();
 		TunerMessage.TMLoginOut.Serialize(mem,tempMsg);
 
-		tempClient.SendNetMessage(7,mem);
+		tempClient.SendMessage(7,mem); 
         
 
     }
@@ -28,16 +29,27 @@ public class Tuner_TNet_Adapter : ITNetAdapter
         System.Console.WriteLine(message);        
     }
 
-    public ITNetWriter GetMsgWriter()
+	public ITNetWriter createMsgWriter()
     {
 
-        return new TNet.Common.TNetWriter();
+        return new TNetWriter();
      //   return new Common.
 
     }
-    public ITNetReader GetMsgReader()
+	public ITNetReader createMsgReader()
     {
-        return new TNet.Common.TNetReader();
+        return new TNetReader();
         //return new Tnet();
     }
+
+	
+	public void onConnected (){}
+	
+	public void onAccepted (){}
+	
+	public void onReConnected (){}
+	
+	public void onNetWorkFailed (){}
+	
+	public void onReConnectBegin (){}
 }

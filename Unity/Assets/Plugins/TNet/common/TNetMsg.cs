@@ -5,7 +5,7 @@
 */
 
 using System.IO;
-namespace TNet.Common
+namespace Tuner.Net
 {
     public class TNetMsg
     {

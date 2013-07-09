@@ -11,22 +11,24 @@
     <AssemblyName>Server</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <Optimize>false</Optimize>
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>False</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <Externalconsole>true</Externalconsole>
+    <Externalconsole>True</Externalconsole>
+    <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
-    <Externalconsole>true</Externalconsole>
+    <Externalconsole>True</Externalconsole>
+    <DebugType>none</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -64,9 +66,14 @@
     <Compile Include="..\Unity\Assets\Plugins\TNet\Proto\TunerMsg.Serializer.cs">
       <Link>Proto\TunerMsg.Serializer.cs</Link>
     </Compile>
-    <Compile Include="ClientAgent.cs" />
-    <Compile Include="TServer.cs" />
     <Compile Include="Tuner_TNet_Adapter.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\Agent.cs">
+      <Link>Common\Agent.cs</Link>
+    </Compile>
+    <Compile Include="..\Unity\Assets\Plugins\TNet\common\AgentHolder.cs">
+      <Link>Common\AgentHolder.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

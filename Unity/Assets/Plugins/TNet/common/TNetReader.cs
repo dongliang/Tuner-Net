@@ -6,7 +6,7 @@
 using System;
 using System.IO;
 using System.Net;
-namespace TNet.Common
+namespace Tuner.Net
 {
 
     //Buffer
@@ -20,7 +20,7 @@ namespace TNet.Common
         /// <param name="size">size</param>
         /// <param name="start">start</param>
         /// <returns>new start</returns>
-        public int DidReadData(byte[] data, int start, int tail, ITNetAdapter adapter,System.Object state)
+        public int DidReadData(byte[] data, int start, int tail, HandleMsgDel handle,System.Object state)
         {
             int size = tail - start;
             int msg_id = 0;
@@ -59,7 +59,7 @@ namespace TNet.Common
                 msg.m_nMsgID = msg_id;
                 msg.m_DataMsg = msg_data_body;
 
-                adapter.HandleMsg(state,msg);
+				handle(state,msg);
             }
             else
             {
@@ -67,12 +67,7 @@ namespace TNet.Common
             }
 
             //recurrence passing the new start address.
-            return DidReadData(data, start + data_size + 8, tail, adapter, state);
-        }
-
-        public void Reset()
-        {
-
+			return DidReadData(data, start + data_size + 8, tail, handle, state);
         }
     }
 }

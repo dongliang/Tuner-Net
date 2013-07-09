@@ -6,13 +6,13 @@
 using System.IO;
 using System.Net;
 using System;
-namespace TNet.Common
+namespace Tuner.Net
 {
 
     public class TNetWriter : ITNetWriter
     {
         private MemoryStream m_Buffer = new MemoryStream();
-        private byte[] sendBuffer = new byte[6];
+
         public byte[] MakeStream(int msgID, MemoryStream data)
         {
 

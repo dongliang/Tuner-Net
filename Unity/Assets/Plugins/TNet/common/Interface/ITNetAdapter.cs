@@ -3,13 +3,28 @@
    e-mail : dongliang17@126.com
    project: https://github.com/dongliang/Tuner-Net
 */
-namespace TNet.Common
+namespace Tuner.Net
 {
-    public interface ITNetAdapter
-    {
-        void HandleMsg(System.Object state,TNetMsg msg);
-        void Debug(object message);
-        ITNetWriter GetMsgWriter();
-        ITNetReader GetMsgReader();
-    }
+		public delegate void CallBackEvtDel ();
+
+		public interface ITNetAdapter
+		{
+				void HandleMsg (System.Object state, TNetMsg msg);
+
+				void Debug (object message);
+
+				ITNetWriter createMsgWriter ();
+
+				ITNetReader createMsgReader ();
+				
+				void onConnected ();
+
+				void onAccepted ();
+				
+				void onReConnected ();
+				
+				void onNetWorkFailed ();
+
+				void onReConnectBegin ();
+		}
 }
